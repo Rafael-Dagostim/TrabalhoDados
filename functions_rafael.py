@@ -1,35 +1,32 @@
+import json
+from logging import exception
+
+poke_json = open('./pokemon.data.json')
+
+pokemon_data = json.load(poke_json)
 
 def sort_pokemon_by_name_asc(pokemon_list):
     """
-    Retorna a lista de pokemos em ordem alfabetica.
-    Feito por Rafael Dagostim
+    Retorna a lista de pokemons em ordem alfabetica, utilizando o algoritimo de ordenação por troca.
+    Feito por Rafael Dagostim.
     """
-    for i in range(0, len(pokemon_list)):
-        for index in range(0, len(pokemon_list) - 1):
-            if(pokemon_list[index]['name'] > pokemon_list[index+1]['name']):
-                res = pokemon_list[index]
-                pokemon_list[index] = pokemon_list[index+1]
-                pokemon_list[index+1] = res
+    for k in range(0, len(pokemon_list)):
+        for i in range(0, len(pokemon_list) - 1):
+            if(pokemon_list[i]['name'] > pokemon_list[i + 1]['name']):
+                pokemon_list[i], pokemon_list[i + 1]  = [pokemon_list[i + 1], pokemon_list[i]]
 
     return pokemon_list
 
-def find_pokemon_by_name(pokemon_list, name, sorted):
+def find_pokemon_by_id(pokemon_list, id):
     """
-    Busca o id do pokemon pelo nome.
-    Feito por Rafael Dagostim
+    Busca o pokemons pelo id, utilizando o algoritimo de busca linear 
+    Feito por Rafael Dagostim.
     """
-    pokemon_list = pokemon_list if sorted == True else sort_pokemon_by_name_asc(pokemon_list)
-    index = len(pokemon_list) % 2
-    if name == pokemon_list(index): return # TODO continuar
+    for pokemon in pokemon_list:
+        if pokemon['id'] == id: return pokemon 
+            
+    raise exception('Pokemon não encontrado')
 
-
-
-print(sort_pokemon_by_name_asc([
-    {'id': 1, 'name': 'Bulbasaur'},
-    {'id': 2, 'name': 'Ivysaur'},
-    {'id': 3, 'name': 'Venusaur'},
-    {'id': 4, 'name': 'Charmander'},
-    {'id': 5, 'name': 'Charmeleon'},
-    {'id': 6, 'name': 'Charizard'},
-    {'id': 7, 'name': 'Squirtle'},
-]))
+print(sort_pokemon_by_name_asc(pokemon_data[0:10]))
+print('------')
+print(find_pokemon_by_id(pokemon_data, 19))
