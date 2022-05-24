@@ -141,3 +141,28 @@ def binary_search_by_pokemon_name(name, pokemon_list):
         i += 1
 
     return pokemon_list[position_found]
+
+def get_pokemon_by_type(type, pokemon_list):
+    """
+    Retorna todos os pokemons de um determinado tipo.
+    Feito por Yuri Damin.
+    """
+    pokemon_by_type = []
+    for pokemon in pokemon_list:
+        if type in pokemon['type']:
+            pokemon_by_type.append(pokemon)
+    
+    return pokemon_by_type
+
+def get_pokemon_by_name_size(size, pokemon_list):
+    """
+    Retorna o tamanho de um determinado nome de pokemon.
+    Feito por Yuri Damin.
+    """
+    pokemon_by_name_size = []
+    for pokemon in pokemon_list:
+        if size == len(pokemon['name']):
+            pokemon_by_name_size.append(pokemon)
+    
+    return pokemon_by_name_size
+
