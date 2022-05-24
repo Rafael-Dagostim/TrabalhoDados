@@ -1,12 +1,15 @@
-import json
+import os
 from logging import exception
 
-poke_json = open('./pokemon.data.json')
-
-pokemon_data = json.load(poke_json)
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def print_pretty_pokemon(pokemon):
-    print('id: %s\tnome: %s\t\ttipo: %s' %(pokemon['id'], pokemon['name'], ' '.join(pokemon['type'])))
+  """
+  Deixa o nome dos pokemons bonitos.
+  Criado por Rafael Dagostim.
+  """
+  print('id: %s\tnome: %s\t\ttipo: %s' %(pokemon['id'], pokemon['name'], ' '.join(pokemon['type'])))
 
 def sort_pokemon_by_name_asc(pokemon_list):
     """
